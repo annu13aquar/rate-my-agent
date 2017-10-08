@@ -1,0 +1,21 @@
+{
+  "name": "automation",
+  "version": "1.0.0",
+  "description": "this is an automated test suite for rate my agent",
+  "main": "config.js",
+  "dependencies": {
+    "babel-register": "^6.26.0"
+  },
+  "devDependencies": {
+    "babel-register": "^6.26.0"
+  },
+  "scripts": {
+    "test": "protractor config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": " "
+  },
+  "author": "annu",
+  "license": "ISC"
+}
