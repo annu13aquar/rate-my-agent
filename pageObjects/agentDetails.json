@@ -1,8 +1,13 @@
 {
   "agent1":
 {
-  "fname": "Clare",
-  "lname": "Adams",
+  "name": "Clare Adams"
 
+
+},
+"agent2":
+{
+  "fname": "Andrew",
+  "lname": "Guarino"
 }
 }

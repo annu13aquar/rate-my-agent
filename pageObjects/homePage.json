@@ -1,0 +1,14 @@
+{
+  "inputs":{
+    "autoSearch": "[ng-click^=openAutoSearch]",
+    "searchBoxID": "#searchBox"
+  },
+  "results":{
+    "resultsetClass": ".rmaAutoSearchResultSet",
+    "bestMatchText": "Best Match",
+    "locationsText": "Locations",
+    "agentsText": "Agents",
+    "agenciesText": "Agencies"
+
+  }
+}
