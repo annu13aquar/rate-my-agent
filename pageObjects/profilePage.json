@@ -1,0 +1,11 @@
+{
+  "profile":{
+    "profileClass": "[ng-class*=rmaAgentProfile]",
+    "detailsClass": "[class^=Details]",
+    "nameClass": "[class^=Details---name]",
+    "agencyNameClass": "a[class*='Details---agencyName']",
+    "ratingClass": "[class*='StarRatingShort---rating']",
+    "reviewClass": "[class*='Details---reviewRating']"
+
+  }
+}

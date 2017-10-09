@@ -1,7 +1,10 @@
 {
   "agent1":
 {
-  "name": "Clare Adams"
+  "name": "Clare Adams",
+  "agencyName": "Woodards Carnegie",
+  "location": "Melbourne, Victoria",
+  "imageUrl": "https://cdn.digitalcastle.com.au/photo/b4f8cabb-b6d9-4d59-b2f9-4e121d835fcf.png"
 
 
 },
