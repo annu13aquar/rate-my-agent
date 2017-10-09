@@ -14,16 +14,17 @@ describe('Search by an agent name', () => {
       browser.wait(function() {
         return element(by.css(inputs.searchBoxID)).isPresent();
       }, 5000,'Search box not found');
-      element(by.css(inputs.searchBoxID)).sendKeys(agent1.name);
+      element(by.css(inputs.searchBoxID)).sendKeys(agent1.name).then(()=>{
 
-      browser.wait(function() {
-        return element(by.css(results.resultsetClass)).isPresent();
-      }, 5000,'Results set box not found');
+        browser.wait(function() {
+          return element(by.css(results.resultsetClass)).isPresent();
+        }, 5000,'Results set box not found');
 
-      expect(element.all(by.cssContainingText(results.resultsetClass,  results.bestMatchText)).isPresent()).toBe(true , 'Failed waiting for section Best Match in the search results');
-      expect(element.all(by.cssContainingText(results.resultsetClass,  results.locationsText)).isPresent()).toBe(true , 'Failed waiting for section Locations in the search results');
-      expect(element.all(by.cssContainingText(results.resultsetClass,  results.agentsText)).isPresent()).toBe(true , 'Failed waiting for section Agents in the search results');
-      expect(element.all(by.cssContainingText(results.resultsetClass,  results.agenciesText )).isPresent()).toBe(true , 'Failed waiting for section Agencies in the search results');
+        expect(element.all(by.cssContainingText(results.resultsetClass,  results.bestMatchText)).isPresent()).toBe(true , 'Failed waiting for section Best Match in the search results');
+        expect(element.all(by.cssContainingText(results.resultsetClass,  results.locationsText)).isPresent()).toBe(true , 'Failed waiting for section Locations in the search results');
+        expect(element.all(by.cssContainingText(results.resultsetClass,  results.agentsText)).isPresent()).toBe(true , 'Failed waiting for section Agents in the search results');
+        expect(element.all(by.cssContainingText(results.resultsetClass,  results.agenciesText )).isPresent()).toBe(true , 'Failed waiting for section Agencies in the search results');
+      });
     });
   });
 
