@@ -1,5 +1,7 @@
 # rate-my-agent
 
+This solution includes a set of automated tests for the search functionality on rate my agent website using Protractor + Jasmine.
+
 **Setup:**
 
 1. Install Node
