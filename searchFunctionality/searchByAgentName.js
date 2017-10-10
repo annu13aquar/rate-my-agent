@@ -62,10 +62,6 @@ describe('Search by an agent name', () => {
       return element(by.css(profile.profileClass)).isPresent();
     }, 10000,'Failed waiting for agent profile page');
 
-    browser.wait(function() {
-      return element(by.css(profile.detailsClass)).isPresent();
-    }, 10000,'Failed waiting for agent details on the agent profile page');
-
     // Validate agent name is displayed on the profile page
     expect(element(by.css(profile.nameClass)).getText()).toContain(agent1.name);
     // Validate agency name is displayed on the page
