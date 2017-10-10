@@ -5,8 +5,7 @@ This solution includes a set of automated tests for the search functionality on 
 **Setup:**
 
 1. Install Node
-2. Install protractor via npm install -g protractor and update webdriver using 
-3. webdriver-manager update
+2. Install protractor via npm install -g protractor and update webdriver using webdriver-manager update
 4. git clone https://github.com/annu13aquar/rate-my-agent.git
 5. npm install to install all the project dependencies
 
