@@ -17,18 +17,8 @@ describe('Search by an agent name', () => {
         return element(by.css(inputs.searchBoxID)).isPresent();
       }, 5000,'Search box not found');
 
-      searchBar.clear();
-      searchBar.sendKeys(searchTerm);
-      searchBar.getAttribute('value').then(insertedValue => {
-        if (insertedValue !== searchTerm) {
-          // Failed, must send characters one at a time
-          searchBar.clear();
-          var i;
-          for(i = 0; i < searchTerm.length; i++){
-            searchBar.sendKeys(searchTerm.charAt(i));
-          }
-        }
-      });
+      browser.executeScript("arguments[0].setAttribute('value', '" + 'Clare Adams ' +"')", searchBar);
+      searchBar.sendKeys(protractor.Key.SPACE);
 
       browser.wait(function() {
         return element(by.css(results.resultsetClass)).isPresent();
@@ -74,7 +64,7 @@ describe('Search by an agent name', () => {
 
     browser.wait(function() {
       return element(by.css(profile.detailsClass)).isPresent();
-    }, 5000,'Failed waiting for agent details on the agent profile page');
+    }, 10000,'Failed waiting for agent details on the agent profile page');
 
     // Validate agent name is displayed on the profile page
     expect(element(by.css(profile.nameClass)).getText()).toContain(agent1.name);
