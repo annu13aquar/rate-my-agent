@@ -9,22 +9,36 @@ describe('Search by an agent name', () => {
 
     browser.get(browser.params.URL);
     browser.ignoreSynchronization = true;
+    let searchBar= element(by.css(inputs.searchBoxID));
+    let searchTerm= agent1.name;
 
     element(by.css(inputs.autoSearch)).click().then(()=>{
       browser.wait(function() {
         return element(by.css(inputs.searchBoxID)).isPresent();
       }, 5000,'Search box not found');
-      element(by.css(inputs.searchBoxID)).sendKeys(agent1.name).then(()=>{
 
-        browser.wait(function() {
-          return element(by.css(results.resultsetClass)).isPresent();
-        }, 5000,'Results set box not found');
-
-        expect(element.all(by.cssContainingText(results.resultsetClass,  results.bestMatchText)).isPresent()).toBe(true , 'Failed waiting for section Best Match in the search results');
-        expect(element.all(by.cssContainingText(results.resultsetClass,  results.locationsText)).isPresent()).toBe(true , 'Failed waiting for section Locations in the search results');
-        expect(element.all(by.cssContainingText(results.resultsetClass,  results.agentsText)).isPresent()).toBe(true , 'Failed waiting for section Agents in the search results');
-        expect(element.all(by.cssContainingText(results.resultsetClass,  results.agenciesText )).isPresent()).toBe(true , 'Failed waiting for section Agencies in the search results');
+      searchBar.clear();
+      searchBar.sendKeys(searchTerm);
+      searchBar.getAttribute('value').then(insertedValue => {
+        if (insertedValue !== searchTerm) {
+          // Failed, must send characters one at a time
+          searchBar.clear();
+          var i;
+          for(i = 0; i < searchTerm.length; i++){
+            searchBar.sendKeys(searchTerm.charAt(i));
+          }
+        }
       });
+
+      browser.wait(function() {
+        return element(by.css(results.resultsetClass)).isPresent();
+      }, 5000,'Results set box not found');
+
+      expect(element.all(by.cssContainingText(results.resultsetClass,  results.bestMatchText)).isPresent()).toBe(true , 'Failed waiting for section Best Match in the search results');
+      expect(element.all(by.cssContainingText(results.resultsetClass,  results.locationsText)).isPresent()).toBe(true , 'Failed waiting for section Locations in the search results');
+      expect(element.all(by.cssContainingText(results.resultsetClass,  results.agentsText)).isPresent()).toBe(true , 'Failed waiting for section Agents in the search results');
+      expect(element.all(by.cssContainingText(results.resultsetClass,  results.agenciesText )).isPresent()).toBe(true , 'Failed waiting for section Agencies in the search results');
+
     });
   });
 
@@ -56,7 +70,7 @@ describe('Search by an agent name', () => {
     // validate agent profile is displayed
     browser.wait(function() {
       return element(by.css(profile.profileClass)).isPresent();
-    }, 5000,'Failed waiting for agent profile page');
+    }, 10000,'Failed waiting for agent profile page');
 
     browser.wait(function() {
       return element(by.css(profile.detailsClass)).isPresent();
